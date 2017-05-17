@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>定义input type="file" 的样式</title>
+        <style type="text/css">
+            .file-box{ position:relative;width:340px;margin: 20px;border: #0a0000 solid 1px}
+            .btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+            .file{ position:absolute; top:0;left: 0; height:24px; filter:alpha(opacity:0);opacity:0;width: 100px; }
+        </style>
+    </head>
+<body>
+
+<div class="file-box">
+    <!--enctype="multipart/form-data"-->
+    <!--<form action="" method="post" >-->
+        <div id="localImag"  style="border: #08d1fd solid 1px;width: 240px;height: 140px">
+            <img id="preview" style="display: block; width:100%; height: 140px;"/>
+        </div>
+        <div style="border: red solid 1px;position: relative;margin: 15px">
+            <input type='button' class='btn' value='浏览...' />
+            <input type="file" name="file" id="doc" class="file" size="28"  style="width:200px;border: #1baf09 solid 1px" onchange="javascript:setImagePreview();document.getElementById('textfield').value=this.value;">
+            <input type='text' name='textfield' id='textfield' class='txt' />
+            input
+        </div>
+    <!--</form>-->
+</div>
+
+
+<script type="text/javascript">
+    //下面用于图片上传预览功能
+    function setImagePreview(avalue) {
+        var docObj=document.getElementById("doc");
+        var imgObjPreview=document.getElementById("preview");
+        if(docObj.files && docObj.files[0])
+        {
+            imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '240px';
+            imgObjPreview.style.height = '140px';
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        } else {
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("localImag");
+//必须设置初始大小
+            localImagId.style.width = "240px";
+            localImagId.style.height = "140px";
+//图片异常的捕捉，防止用户修改后缀来伪造图片
+            try{
+                localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            } catch(e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+        return true;
+    }
+
+</script>
+</body>
+</html>

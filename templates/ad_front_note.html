@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="topic_detail">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>话题详情</title>
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/static/css/custom-styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/wangEditor.min.css">
+    <style>
+        /*图片上传预览*/
+        .u_pic > div {
+            float: left
+        }
+
+        #preview {
+            display: block;
+            width: 280px;
+            height: 160px;
+            border: #ddd solid 1px
+        }
+
+        #preview img {
+            display: block;
+            width: 280px;
+            height: 160px;
+        }
+
+        .cho_picbtn {
+            position: relative;
+        }
+
+        @media (min-width: 1330px) {
+            .cho_picbtn {
+                position: relative;
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 1330px) {
+            .cho_picbtn {
+                position: relative;
+                margin-top: 15px;
+                margin-left: 5px;
+            }
+        }
+
+        .cp_btn {
+            height: 30px;
+            width: 75px;
+            color: #fff;
+            background-color: #64ccb1;
+            border: 1px solid #CDCDCD;
+            border-radius: 3px
+        }
+
+        .hfile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            filter: alpha(opacity:0);
+            opacity: 0;
+            width: 75px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="hmain">
+    <!-- NAV TOP  -->
+    <nav class="navbar navbar-default top-navbar row" role="navigation">
+        <div class="navbar-header col-md-9 col-sm-8 ">
+            <a class="navbar-brand" href="index.html"><i class="fa fa-gear"></i> <strong>CHEESE</strong></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <!--<i class="fa fa-bars" style="font-size: 20px;color: #FFF;"></i>-->
+            </button>
+        </div>
+        <ul class="nav nav_hr col-md-3 col-sm-4 ">
+            <span>您好，admin</span>&nbsp;&nbsp;|
+            <button class="btn btn-link" id="nav_outbtn" onfocus="this.blur()">退出</button>
+        </ul>
+    </nav>
+    <!-- NAV TOP  -->
+    <!--  NAV SIDE  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--首页-->
+                <li><a href="index.html"><i class="fa fa-dashboard"></i>首页</a></li>
+
+                <li><a class="active-menu" href="ad_front_note.html"><i class="fa fa-tasks"></i>前端笔记</a></li>
+                <!--社团-->
+                <li><a href="ad_life_logs.html"><i class="fa fa-legal"></i>生活日志</a></li>
+                <li><a href="ad_small_notes.html"><i class="fa fa-smile-o"></i>闲言碎语</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--  NAV SIDE  -->
+    <!-- PAGE INNER  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <h1 class="page-header">
+                    &nbsp; 前端笔记文章发表&nbsp;
+                    <small style="font-size: 14px"><i class="fa fa-magnet"></i>&nbsp;&nbsp;Show up your stats</small>
+                </h1>
+            </div>
+            <!-- /. ROW  -->
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div style="position: fixed;top:120px;right:50px;opacity: 0.8;z-index: 10;">
+                            <button type="button" id="topic_edit" class="btn btn-info btn-lg" onclick="myForm()">编辑
+                            </button>
+                            <button type="button" id="re_topic_edit" class="btn btn-danger btn-lg" onclick="myFormre()">
+                                取消编辑
+                            </button>
+                            <button type="button" @click="save_note" class="btn btn-success btn-lg">保存提交</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div>
+                            <div style="float: left;line-height: 3rem">文章标题：</div>
+                            <div style="float: left;margin-right: 3rem">
+                                <input type="text" style="width: 30rem" v-model="title" class="form-control">
+                            </div>
+                            <div style="float: left;line-height: 3rem">笔记分类：</div>
+                            <div style="float: left;margin-right: 3rem">
+                                {% csrf_token %}
+                                <select v-model="note_sort" class="form-control" name="note_sort" id="note_sort">
+                                    <option value="1">Html/CSS</option>
+                                    <option value="2">JS</option>
+                                    <option value="3">动画特效</option>
+                                </select>
+                            </div>
+
+                            <div style="float: left;line-height: 3rem">标签：</div>
+                            <div style="float: left">
+                                <input type="text" v-model="tag" class="form-control">
+                            </div>
+                            <div style="clear: both;height: 2rem"></div>
+                        </div>
+
+                        <div style="min-height: 300px">
+
+                            <div class="form-group">
+                                <label for="u_pic" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">头像</label>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-8">
+                                    <div id="u_pic" class="u_pic">
+                                        <div id="preview"></div>
+                                        <div class="cho_picbtn">
+                                            <input type='button' class='cp_btn' value='选择图片'/>
+                                            <input type="file" name="file" id="upload_images" class="hfile">
+                                            <input type="button" @click="upload_images_submit" value="上传图片">
+                                            <p style="font-size: 12px;margin-top: 10px">支持JPG、PNG、JPEG格式，不要超过2M</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <div>
+                            <div id="edit_front_note" style="min-height: 500px">
+
+                            </div>
+                        </div>
+                        <div class="pub_bottom text-center">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+        </div>
+        <footer><p>Copyright &copy; 2016.Company name All rights reserved.</p></footer>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+
+<script src="/static/js/jquery-1.11.2.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.metisMenu.js"></script>
+<script src="/static/js/custom-scripts.js"></script>
+<script src="/static/js/vue2.0/vue.js"></script>
+<script src="/static/js/wangEditor.js"></script>
+
+<script src="/static/js/jquery.ui.widget.js"></script>
+<script src="/static/js/jquery.iframe-transport.js"></script>
+<script src="/static/js/jquery.fileupload.js"></script>
+<script src="/static/js/jquery.fileupload-process.js"></script>
+<script src="/static/js/jquery.fileupload-validate.js"></script>
+
+<script>
+    function myForm() {
+        document.getElementById("topic_detail_form").contentEditable = true;
+    }
+    function myFormre() {
+        document.getElementById("topic_detail_form").contentEditable = false;
+    }
+    var se33t = new Vue({
+        delimiters: ['{$', '$}'],
+        el: "#hmain",
+        data: {
+            title: "",
+            tag: "",
+            note_sort: "1",
+            note_htm: "",
+            note_format: "",
+            note_txt: "",
+            image_path: null
+        },
+        mounted: function () {
+            var self = this;
+            self.editor = new wangEditor($("#edit_front_note"));
+            self.editor.config.uploadParams = {
+                csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+            };
+            self.editor.onchange = function () {
+                self.note_htm = self.editor.$txt.html();
+                self.note_format = self.editor.$txt.formatText();
+                self.note_txt = self.editor.$txt.text()
+            };
+            self.editor.config.uploadImgUrl = '/upload_img/';
+            self.editor.config.hideLinkImg = true;
+            self.editor.create();
+            self.init_upload_images()
+        },
+        methods: {
+            init_upload_images: function () {
+                var self = this;
+                $("#upload_images").fileupload({
+                    url: '/upload_img/',
+                    sequentialUploads: true,
+                    autoUpload: false,
+                    formData: {
+                        "csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val(),
+                        "action": "front_note"
+                    },
+                    add: function (e, data) {
+                        var file = data;
+                        self.image_obj = data;
+                        var prevDiv = document.getElementById('preview');
+                        if (file.files && file.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (evt) {
+                                prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';
+                            };
+                            reader.readAsDataURL(file.files[0]);
+                        } else {
+                            prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
+                        }
+                    }
+                });
+            },
+            upload_images_submit: function () {
+                var self = this;
+                if (self.image_obj != undefined) {
+                    self.image_obj.submit().success(function (result, textStatus, jqXHR) {
+                        var res_arr = result.split("|");
+                        if (res_arr.length > 1) {
+                            alert(res_arr[1])
+                        } else {
+                            console.log(result);
+                            self.image_path = result
+                        }
+                    })
+                }
+            },
+            save_note: function () {
+                var self = this;
+                /*
+                 var data = {
+                 "note_sort": self.note_sort,
+                 "note_htm": self.note_htm,
+                 "note_txt": self.note_txt,
+                 "csrfmiddlewaretoken": $("input[name='csrfmiddlewaretoken']").val()
+                 };
+                 */
+                var data = self._data;
+                data["csrfmiddlewaretoken"] = $("input[name='csrfmiddlewaretoken']").val()
+                $.post("/save_note/", data, function (result) {
+                    console.log(result)
+                    alert(result)
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

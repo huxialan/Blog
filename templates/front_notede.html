@@ -1,0 +1,272 @@
+{% extends "base_with_menu.html" %}
+{% block title %} 若末lan博客-前端笔记 {% endblock title %}
+{% block ext_before_css %}
+
+{% endblock ext_before_css %}
+{% block ext_after_css %}
+{% endblock ext_after_css %}
+{% block content %}
+    <!-- end header -->
+    <div class="row fn_row">
+        <!-- start 文章列表-->
+        <div class="in_front col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+            <div class="row wow fadeInDown">
+                <h4 style="padding-top: 50px">
+                    <a href="#">前端笔记&nbsp;&nbsp;>&nbsp;&nbsp;<span
+                            style="font-size: 14px;color:#0d8e75">JS/jQuery</span></a>
+                </h4>
+            </div>
+            <div class="row">
+                <div class="hotde_art">
+                    <article>
+                        <h3 class="text-center">jQuery图片裁剪插件jQuery-photoClip使用案例</h3>
+                        <p class="text-center" style="font-size: 12px;color:#999">2017-4-10 07:44:37　博主: 若末lan</p>
+                        <p class="fnl_brief">
+                            jQuery图片裁剪插件jQuery-photoClip使用,jQuery-photoClip是一款支持移动设备触摸手势的jQuery图片裁剪插件。该图片裁剪插件在移动设备上可以使用手指来进行各种操作，如缩放、旋转等，同时在桌面设备中也提供了相应的方法来操作，是一款非常不错的图片裁剪插件。</p>
+                        <div class="text-center hotde_ximg">
+                            <img src="/static/images/company-img-1.jpg" class="img-responsive fnl_img" alt="company 1">
+                        </div>
+                        <p class="fnl_brief">
+                            jQuery图片裁剪插件jQuery-photoClip使用,jQuery-photoClip是一款支持移动设备触摸手势的jQuery图片裁剪插件。该图片裁剪插件在移动设备上可以使用手指来进行各种操作，如缩放、旋转等，同时在桌面设备中也提供了相应的方法来操作，是一款非常不错的图片裁剪插件。</p>
+
+                    </article>
+                    <div class="row updown_actitle">
+                        <a href="#">上一题：没有了</a>
+                        <a href="#">下一篇：建站过程中关于响应式设计的一些体会</a>
+                    </div>
+                    <hr>
+
+                    <div id="hotde_pucom" class="row hi_publish_com" style="padding-top: 25px">
+                        <div class="form-group">
+                            <label><img src="/static/images/spic/pubcom.png"/>发表评论:</label>
+                            <textarea placeholder="快来说两句吧..." class="form-control"></textarea>
+                        </div>
+                        <div style="text-align: right">
+                            <button class="btn btn-info">发表评论</button>
+                        </div>
+                    </div>
+                    <div class="hotde_comment">
+                        <div class="row hotde_comment_title"><img src="./images/spic/hot_com.png"/>热门评论</div>
+
+                        <div class="row">
+                            <!--一级评论-->
+                            <div class="h_hotde_com" id="h_hotde_com1">
+                                <p class="hotde_comment_row_p">
+                                    <a href="#">
+                                        <img src="/static/images/spic/up1.jpg" class="hotde_comment_img"/>&nbsp;&nbsp;丫头
+                                    </a> ：
+                                    <span class="hotde_comment_img_date">[2016-11-09 08:05]</span>
+                                    <span class="hotde_comment_zancom">
+                                    <span>
+                                        <img src="/static/images/spic/zan0.png" id="hotde_comment_zancom_img1"
+                                             onclick="hotdecZan()"/>
+                                        <span id="hotde_comment_zancom_in1">12</span>
+                                    </span>
+                                    <span>
+                                        <img src="/static/images/spic/hotcom0.png" id="hotde_comment_row_combtn"/>12
+                                    </span>
+                                    <span id="h_hotde_com1_del">
+                                        <i class="fa fa-trash-o" style="font-size: 16px"></i>
+                                    </span>
+                                </span>
+                                </p>
+                                <p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗 那又怎样呢？？？</p>
+                            </div>
+                            <!--发表回复框-->
+                            <div class="hotde_comment_pubresp" id="hotde_comment_pubresp1">
+                                <textarea class="form-control"></textarea>
+                                <div class="hotde_comment_pubresp_div text-right">
+                                    <button type="button" id="hotde_comment_pubresp_div_celb1"
+                                            class="btn btn-danger btn-sm">取消
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-sm">回复</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!--二级评论-->
+                            <div class="row hotde_comment_seclayer" id="h_hotde_com1_1">
+                                <p class="hotde_comment_row_p"><a href="#"><img src="/static/images/spic/up1.jpg"
+                                                                                class="hotde_comment_img"/>&nbsp;&nbsp;萌萌哒萌萌哒萌萌哒萌萌哒</a>
+                                    ：<span class="hotde_comment_img_date">[2016-11-19 12:45]</span>
+                                    <span class="hotde_comment_zancom">
+                                    <span>
+                                        <button type="button" id="hotde_comment_seclayer_resb" class="btn btn-link"
+                                                style="margin:0;padding: 0 3px" onfocus="this.blur()">回复</button>
+                                        <button type="button" id="h_hotde_com1_1del" class="btn btn-link"
+                                                style="margin:0;padding: 0 3px " onfocus="this.blur()">删除</button>
+                                    </span>
+                                </span>
+                                </p>
+                                <p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗 那又怎样呢？？？</p>
+                            </div>
+                            <!--发表回复框-->
+                            <div class="hotde_comment_pubresp" id="hotde_comment_pubresp2">
+                                <textarea class="form-control"></textarea>
+                                <div class="hotde_comment_pubresp_div text-right">
+                                    <button type="button" id="hotde_comment_pubresp_div_celb2"
+                                            class="btn btn-danger btn-sm">取消
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-sm">回复</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p><a href="#"><img src="/static/images/spic/upic.jpg"
+                                                class="hotde_comment_img"/>&nbsp;&nbsp;丫头</a> ：<span
+                                    class="hotde_comment_img_date">[2016-11-09 08:05:43]</span></p>
+                            <p style="margin:-15px auto 15px 50px">有用了，谢谢</p>
+                        </div>
+                        <hr>
+                        <div class="row hotde_comment_title"><img src="../assets/images/talk/comment.png"/>最新评论</div>
+                        <div class="row">
+                            <p><a href="#"><img src="./images/spic/up1.jpg"
+                                                class="hotde_comment_img"/>&nbsp;&nbsp;丫头</a> ：<span
+                                    class="hotde_comment_img_date">[2016-11-09 08:05:43]</span></p>
+                            <p style="margin:-15px auto 15px 50px">ღ⊙□⊙╱ 该怎样就怎样呗 那又怎样呢？？？</p>
+                        </div>
+                        <div class="row">
+                            <p><a href="#"><img src="./images/spic/upic.jpg"
+                                                class="hotde_comment_img"/>&nbsp;&nbsp;丫头</a> ：<span
+                                    class="hotde_comment_img_date">[2016-11-09 08:05:43]</span></p>
+                            <p style="margin:-15px auto 15px 50px">谢谢大神！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 文章列表 -->
+        <!--右边-->
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="fnr_divf">
+                <h3>最新文章</h3>
+                <ul class="fn_rul">
+                    <li>
+                        <span>1</span>
+                        <a href="#">jQuery图片裁剪插件jQuery-photoClip使用案例</a>
+                    </li>
+                    <li>
+                        <span>2</span>
+                        <a href="#">建站过程中关于响应式设计的一些体会</a>
+                    </li>
+                    <li>
+                        <span>3</span>
+                        <a href="#">Bootstrap 网格Padding超出页面的Bug Fix</a>
+                    </li>
+                    <li>
+                        <span>4</span>
+                        <a href="#">Bootstrap 网格Padding超出页面的</a>
+                    </li>
+                    <li>
+                        <span>5</span>
+                        <a href="#">Bootstrap 网格Padding超出页面</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fnr_divf">
+                <h3>热门标签</h3>
+                <span>jQuery</span><span>jQuery</span><span>jQuery</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- start 联系我 -->
+    <section id="contact" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                    <h3>联系若末LAN</h3>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>欢迎小伙伴们来看看，有什么问题赶紧联系我呀^-^</p>
+                </div>
+                <div class="col-md-2"></div>
+                <form action="#" method="post">
+                    <div class="col-md-4 wow fadeInLeft" data-wow-delay="2000">
+                        <input type="text" placeholder="昵称" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInDown" data-wow-delay="2000">
+                        <input type="email" placeholder="邮箱" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInRight" data-wow-delay="2000">
+                        <input type="text" placeholder="主题" class="form-control">
+                    </div>
+                    <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                        <textarea placeholder="有什么想对我说的呀~~" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="2000">
+                        <input type="submit" value="发送呼啦啦" class="form-control">
+                    </div>
+                    <div class="col-md-3"></div>
+                </form>
+            </div>
+        </div>
+        <footer class="container">
+            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+                <span>Copyright © 若末lan博客 2016-2017 保留所有权利 . 浙ICP备13005409号</span>
+                <p>
+                    <span>本站部分资源来源于网络，如果侵犯了您的权利，请及时和我联系，本站将在第一时间删除相关资源！</span>
+                </p>
+                <p>
+                    <span>浙公网安备 33010802002965号</span></p>
+                <ul class="social_icon">
+                    <!--jithub-->
+                    <li><a href="#" class="fa fa-git"></a></li>
+                    <!--csdn&&&-->
+                    <li><a href="http://blog.csdn.net/qq_33242126" class="fa fa-facebook-square"></a></li>
+                    <!--简书-->
+                    <li><a href="#" class="fa fa-git"></a></li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+    <!-- end 联系我 -->
+
+{% endblock content %}
+{% block ext_js %}
+    <script>
+        //一级评论
+        $('#hotde_comment_row_combtn').click(function () {
+            $('#hotde_comment_pubresp1').css('display', 'block');
+            $('#hotde_comment_pubresp1>textarea').focus();
+        });
+        $('#hotde_comment_pubresp_div_celb1').click(function () {
+            $('#hotde_comment_pubresp1').css('display', 'none');
+        });
+        //二级评论
+        $('#hotde_comment_seclayer_resb').click(function () {
+            $('#hotde_comment_pubresp2').css('display', 'block');
+            $('#hotde_comment_pubresp2>textarea').focus();
+        });
+        $('#hotde_comment_pubresp_div_celb2').click(function () {
+            $('#hotde_comment_pubresp2').css('display', 'none');
+        });
+
+        //    170410,图片适配
+        $(function () {
+            var himg_div = $('.hotde_ximg').width();
+            var himg = $('article img');
+            for (var i = 0; i < himg.length; i++) {
+                if (himg[i].width >= himg_div) {
+                    himg[i].width = himg_div;
+                }
+            }
+        });
+
+
+        //170421一级评论删除
+        $('#h_hotde_com1_del').click(function () {
+            $('#h_hotde_com1').parent().remove();
+            $('#h_hotde_com1_1').parent().remove();
+        });
+        //二级评论删除
+        $('#h_hotde_com1_1del').click(function () {
+            $('#h_hotde_com1_1').parent().remove();
+        });
+    </script>
+{% endblock ext_js %}

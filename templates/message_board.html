@@ -1,0 +1,103 @@
+{% extends "base_with_menu.html" %}
+{% block title %} 若末lan博客-留言板 {% endblock title %}
+{% block ext_before_css %}
+
+{% endblock ext_before_css %}
+{% block ext_after_css %}
+{% endblock ext_after_css %}
+{% block content %}
+    <!-- start 文章列表-->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-7 wow fadeInLeft" data-wow-delay="2000">
+                    <h3>留言板</h3>
+                    <h2>Digital Studio in Bangkok</h2>
+                    <p>Crystal is free web template for everyone. Feel free to use it for your website. Please spread a
+                        word about <span class="blue">template</span><span class="green">mo</span> to your friends.
+                        Integer lorem magna, gravida vitae metus a, euismod faucibus nisi. In sed nulla magna. Nulla in
+                        mauris ullamcorper, cursus lorem lobortis, pellentesque enim. Ut vel pellentesque est. Maecenas
+                        sed malesuada tellus.</p>
+                </div>
+                <div class="col-sm-6 col-md-5 wow fadeInRight" data-wow-delay="2000">
+                    <h3>Our Location</h3>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <img src="/static/images/company-img-1.jpg" class="img-responsive" alt="company 1">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <img src="/static/images/company-img-2.jpg" class="img-responsive" alt="company 2">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <img src="/static/images/company-img-3.jpg" class="img-responsive" alt="company 3">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <img src="/static/images/company-img-4.jpg" class="img-responsive" alt="company 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end 文章列表 -->
+    <!-- start 联系我 -->
+    <section id="contact" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                    <h3>联系若末LAN</h3>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>欢迎小伙伴们来看看，有什么问题赶紧联系我呀^-^</p>
+                </div>
+                <div class="col-md-2"></div>
+                <form action="#" method="post">
+                    <div class="col-md-4 wow fadeInLeft" data-wow-delay="2000">
+                        <input type="text" placeholder="昵称" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInDown" data-wow-delay="2000">
+                        <input type="email" placeholder="邮箱" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInRight" data-wow-delay="2000">
+                        <input type="text" placeholder="主题" class="form-control">
+                    </div>
+                    <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                        <textarea placeholder="有什么想对我说的呀~~" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="2000">
+                        <input type="submit" value="发送呼啦啦" class="form-control">
+                    </div>
+                    <div class="col-md-3"></div>
+                </form>
+            </div>
+        </div>
+        <div class="google_map">
+            <div id="map-canvas"></div>
+        </div>
+        <footer class="container">
+            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+                <span>Copyright © 若末lan博客 2016-2017 保留所有权利 . 浙ICP备13005409号</span>
+                <p>
+                    <span>本站部分资源来源于网络，如果侵犯了您的权利，请及时和我联系，本站将在第一时间删除相关资源！</span>
+                </p>
+                <p>
+                    <span>浙公网安备 33010802002965号</span></p>
+                <ul class="social_icon">
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-apple"></a></li>
+                    <li><a href="#" class="fa fa-pinterest"></a></li>
+                    <li><a href="#" class="fa fa-google"></a></li>
+                    <li><a href="#" class="fa fa-wordpress"></a></li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+    <!-- end 联系我 -->
+
+
+{% endblock content %}
+{% block ext_js %}
+
+{% endblock ext_js %}

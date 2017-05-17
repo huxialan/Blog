@@ -1,0 +1,165 @@
+{% extends "base_with_menu.html" %}
+{% block title %} 若末lan博客-前端笔记 {% endblock title %}
+{% block ext_before_css %}
+
+{% endblock ext_before_css %}
+{% block ext_after_css %}
+{% endblock ext_after_css %}
+{% block content %}
+
+    <div class="row fn_row">
+        <!-- start 文章列表-->
+        <div class="in_front col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-7 col-md-7 col-sm-10 col-xs-12">
+            <div class="row wow fadeInDown">
+                <h4 class="infd_h4">
+                    <a href="#">前端笔记&nbsp;&nbsp;>&nbsp;&nbsp;<span
+                            style="font-size: 14px;color:#0d8e75">JS/jQuery</span></a>
+                </h4>
+            </div>
+            <div class="row">
+                {% for fn in frontnotes %}
+                    <div class="row fn_lists">
+                        <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInRight" data-wow-delay="2000">
+                            <a href="/view/{{ fn.id }}/">
+                                <img src="{{ fn.hf_artile_img }}" class="img-responsive fnl_img"
+                                     alt="company 1"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-8 wow fadeInLeft" data-wow-delay="2000">
+                            <h3><a href="/view/{{ fn.id }}/">{{ fn.hf_artile_title }}</a></h3>
+                            <p class="fnl_stip">
+                                <span><i class="fa fa-clock-o"></i>{{ fn.artile_date }}</span>
+                                <span><i class="fa fa-eye"></i>阅读(107)</span>
+                                <span><a href="#"><i class="fa fa-comments-o"></i>评论(26)</a></span>
+                                <span><a href="#"><i class="fa fa-tags"></i>{{ fn.hf_artile_label }}</a></span>
+                            </p>
+                            <p class="fnl_brief">
+                                {{ fn.hf_artile_content_txt }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!-- end 文章列表 -->
+        <!--右边-->
+        <div class="col-lg-offset-0 col-lg-3 col-md-offset-0 col-md-3 col-sm-offset-1 col-sm-10 col-xs-12">
+            <div class="fnr_divf">
+                <h3>最新文章</h3>
+                <ul class="fn_rul">
+                    {% for title in title_list %}
+                        <li>
+                            <span>{{ title.number }}</span>
+                            <a href="/view/{{ title.id }}/" title="{{ title.title }}">{{ title.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="fnr_divs">
+                <h3>热门标签</h3>
+                <div id="tag-cloud"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- start 联系我 -->
+    <section id="contact" class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                    <h3>联系若末LAN</h3>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>欢迎小伙伴们来看看，有什么问题赶紧联系我呀^-^</p>
+                </div>
+                <div class="col-md-2"></div>
+                <form action="#" method="post">
+                    <div class="col-md-4 wow fadeInLeft" data-wow-delay="2000">
+                        <input type="text" placeholder="昵称" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInDown" data-wow-delay="2000">
+                        <input type="email" placeholder="邮箱" class="form-control" required>
+                    </div>
+                    <div class="col-md-4 wow fadeInRight" data-wow-delay="2000">
+                        <input type="text" placeholder="主题" class="form-control">
+                    </div>
+                    <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
+                        <textarea placeholder="有什么想对我说的呀~~" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="2000">
+                        <input type="submit" value="发送呼啦啦" class="form-control">
+                    </div>
+                    <div class="col-md-3"></div>
+                </form>
+            </div>
+        </div>
+        <footer class="container">
+            <div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+                <span>Copyright © 若末lan博客 2016-2017 保留所有权利 . 浙ICP备13005409号</span>
+                <p>
+                    <span>本站部分资源来源于网络，如果侵犯了您的权利，请及时和我联系，本站将在第一时间删除相关资源！</span>
+                </p>
+                <p>
+                    <span>浙公网安备 33010802002965号</span></p>
+                <ul class="social_icon">
+                    <!--jithub-->
+                    <li><a href="#" class="fa fa-git"></a></li>
+                    <!--csdn&&&-->
+                    <li><a href="http://blog.csdn.net/qq_33242126" class="fa fa-facebook-square"></a></li>
+                    <!--简书-->
+                    <li><a href="#" class="fa fa-git"></a></li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+    <!-- end 联系我 -->
+{% endblock content %}
+{% block ext_js %}
+    <script src="js/jquery.svg3dtagcloud.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var entries = [
+                {label: 'Bootstrap', url: '#', target: '_top'},
+                {label: '轮播', url: '#', target: '_top'},
+                {label: '小游戏', url: '', target: '_top'},
+                {label: '下拉菜单', url: '', target: '_top'},
+                {label: 'CSS', url: '', target: '_top'},
+                {label: '表单验证', url: '', target: '_top'},
+                {label: '网格布局', url: '', target: '_top'},
+                {label: 'Twitter', url: '', target: '_top'},
+                {label: 'GitHub', url: 'https://github.com/huxialan', target: '_top'},
+                {label: 'CSDN', url: 'http://blog.csdn.net/qq_33242126', target: '_top'},
+                {label: 'HTML', url: '', target: '_top'},
+                {label: 'jQuery', url: '', target: '_top'}
+            ];
+            var settings = {
+                entries: entries,
+                width: '100%',
+                height: 100,
+                radius: '65%',
+                radiusMin: 75,
+                bgDraw: true,
+                bgColor: '#FFF',
+//                bgColor: '#494A5F',
+                opacityOver: 1.00,
+                opacityOut: 0.05,
+                opacitySpeed: 6,
+                fov: 800,
+                speed: 0.5,
+                fontFamily: 'Oswald, Arial, sans-serif',
+                fontSize: '16',
+                fontColor: '#0d8e75',
+                fontWeight: 'bold',
+                fontStyle: 'normal',
+                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                fontToUpperCase: true
+            };
+            $('#tag-cloud').svg3DTagCloud(settings);
+
+        });
+
+    </script>
+{% endblock ext_js %}

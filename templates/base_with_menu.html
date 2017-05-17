@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    {% block ext_before_css %} {% endblock ext_before_css %}
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/templatemo-style.css">
+    {% block ext_after_css %} {% endblock ext_after_css %}
+
+</head>
+<body>
+<header>
+    {% include "header.html" %}
+</header>
+<section>
+    {% csrf_token %}
+    {% block content %}
+        <!--这里调用index.html文件显示首页内容-->
+    {% endblock content %}
+</section>
+{#<section>#}
+{#    {% include "footer.html" %}#}
+{#</section>#}
+
+<!-- start javascript -->
+<script src="/static/js/jquery-1.11.2.min.js"></script>
+<!--<script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.simple-text-rotator.js"></script>
+<script src="/static/js/smoothscroll.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/jquery.flexslider.js"></script>
+<script src="/static/js/templatemo-script.js"></script>
+{% block ext_js %}
+
+{% endblock ext_js %}
+
+</body>
+
+</html>

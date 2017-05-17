@@ -1,0 +1,49 @@
+body {
+  background-color: #F8F3A9;
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+    width: 100%;
+  min-height: 100vh;
+}
+
+canvas {
+  border-radius: .4em;
+}
+header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    padding:20px;
+    background-color: #0a0000;
+    filter:alpha(opacity:80);
+    opacity: 0.8;
+    font-family: "Microsoft YaHei", "宋体", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+}
+header a{
+    color:#fff;
+    text-decoration: none;
+}
+header a:hover{
+    color: #10ad8f;
+}
+a.home{
+    font-size: 18px;
+    font-weight: 700;
+     padding: 30px;
+    text-align: center;
+}
+a.game{
+    font-size: 14px;
+   margin: auto;
+}
